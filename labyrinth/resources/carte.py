@@ -1,5 +1,4 @@
 # -*-coding:Utf-8 -*
-
 """Ce module contient la classe Carte."""
 
 class Carte:
