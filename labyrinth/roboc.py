@@ -5,12 +5,19 @@
 Exécutez-le avec Python pour lancer le jeu.
 
 """
+<<<<<<< HEAD
 from resources.carte import Carte
 from resources.labyrinthe import Labyrinthe
 import os
 
 
 
+=======
+
+import os
+
+from carte import Carte
+>>>>>>> initial version of labyrinth
 
 # On charge les cartes existantes
 cartes = []
@@ -20,8 +27,11 @@ for nom_fichier in os.listdir("cartes"):
         nom_carte = nom_fichier[:-3].lower()
         with open(chemin, "r") as fichier:
             contenu = fichier.read()
+<<<<<<< HEAD
             labyrinth = Labyrinthe("carlos", contenu)
             cartes.append()
+=======
+>>>>>>> initial version of labyrinth
             # Création d'une carte, à compléter
 
 # On affiche les cartes existantes
