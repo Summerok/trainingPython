@@ -8,5 +8,10 @@ class Labyrinthe:
 
     def __init__(self, robot, obstacles):
         self.robot = robot
-        self.grille = {}
+        self.grille = obstacles
         # ...
+    def __str__(self):
+        liste = []
+        for obj in self.grille.values:
+            liste.append(obj)
+        return liste
