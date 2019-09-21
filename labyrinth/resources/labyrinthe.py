@@ -70,7 +70,10 @@ class Labyrinthe:
                 base_position_x = pos[0]
                 base_position_y = pos[1]
                 return base_position_x, base_position_y
+    
+    def get_direction(curr_x, curr_y, direc):
 
+    
     def move_robot(self, movement):
         """Method which defines the movement of the robot"""
         #direction n, s, e, w or q (to save & quit)
@@ -88,6 +91,7 @@ class Labyrinthe:
         
         #getting robot position
         base_position_x, base_position_y = self.robot_position()
+        
         #list of positions related with the movement
         intermediate_pos = []
 
@@ -113,6 +117,7 @@ class Labyrinthe:
                     else:
                         intermediate_pos.append((next_position_x, next_position_y))
                         current_position_y = next_position_y
+                        current_position_x = next_position_x
                 i += 1
             if not wrong_movement:
                 i = 0
