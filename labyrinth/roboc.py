@@ -67,7 +67,7 @@ while retry:
         else:
             if selection > 0:
                 laby.grille = cartes[selection-1].labyrinthe
-                laby.fill_doors()
+                laby.fill_information()
                 retry = False
             else:
                 print("You did a wrong selection!")
@@ -80,4 +80,12 @@ game_continue = True
 while game_continue:
     laby.save_your_game()
     movement = input("> ")
-    laby.move_robot(movement)
+    #q (to save & quit)
+    if movement[:1] == "q": 
+        game_continue = False
+        print("Your game is being saved...\n\
+See you soon!")   
+    else:
+        game_continue = laby.move_robot(movement)
+     
+os.system("pause")
