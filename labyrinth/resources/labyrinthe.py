@@ -139,7 +139,7 @@ class Labyrinthe:
 
         current_position_x = base_position_x
         current_position_y = base_position_y
-        intermediate_pos.append(base_position_x, base_position_y)
+        intermediate_pos.append((base_position_x, base_position_y))
         
         #Verifying that the robot doesn't block
         i = 0
@@ -153,7 +153,7 @@ class Labyrinthe:
                         .format(self.robot))
                     print("Try another movement, please")
                 else:
-                    intermediate_pos.append(next_position_x, next_position_y)
+                    intermediate_pos.append((next_position_x, next_position_y))
                     current_position_y = next_position_y
                     current_position_x = next_position_x
             i += 1
