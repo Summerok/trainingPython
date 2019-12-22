@@ -23,17 +23,12 @@ for nom_fichier in os.listdir("cartes"):
             contenu = fichier.read()
             carte = Carte(nom_carte, contenu)
             cartes.append(carte)
-            #laby = Labyrinthe(nom_robot, carte.labyrinthe)
+
 # Création d'une carte, à compléter
 print("You can create and edit your own cartes, just by typing\
 a .txt with the labyrinth")
 print("Nota: Borders are always limited either by O 'obstacle' or U 'exit'")
 os.system("pause")
-            #print(laby)
-#laby.save_your_game()
-#laby1 = laby.load_last_game()
-#print(laby1)
-
 
 # On affiche les cartes existantes
 print("Existing labyrinths :")

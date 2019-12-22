@@ -10,6 +10,7 @@ class Carte:
         self.labyrinthe = self.creer_labyrinthe_depuis_chaine(chaine)
 
     def __repr__(self):
+        """Retourner le nom de la carte definie"""
         return "<Carte {}>".format(self.nom)
 
     def creer_labyrinthe_depuis_chaine(self, chaine):

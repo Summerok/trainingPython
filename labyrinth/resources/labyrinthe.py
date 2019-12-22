@@ -89,6 +89,7 @@ class Labyrinthe:
                 return base_position_x, base_position_y
     
     def get_direction(self, curr_x, curr_y, direc):
+        """It allows us to get next coordinates from base position and direction"""
         next_x = 0
         next_y = 0
         if direc == "n":
@@ -138,7 +139,7 @@ class Labyrinthe:
 
         current_position_x = base_position_x
         current_position_y = base_position_y
-        intermediate_pos.append((base_position_x, base_position_y))
+        intermediate_pos.append(base_position_x, base_position_y)
         
         #Verifying that the robot doesn't block
         i = 0
@@ -152,7 +153,7 @@ class Labyrinthe:
                         .format(self.robot))
                     print("Try another movement, please")
                 else:
-                    intermediate_pos.append((next_position_x, next_position_y))
+                    intermediate_pos.append(next_position_x, next_position_y)
                     current_position_y = next_position_y
                     current_position_x = next_position_x
             i += 1
@@ -160,6 +161,7 @@ class Labyrinthe:
         if not wrong_movement:
             i = 0
             while i < step:
+                #Moving forward impacts in last position if it was a door or not
                 if self.is_door(intermediate_pos[i]):
                     self.grille[intermediate_pos[i][0],intermediate_pos[i][1]] = "."
                 else:
