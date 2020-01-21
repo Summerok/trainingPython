@@ -12,15 +12,18 @@
 #    attente += random.randint(1, 60) / 100
 #    # attente est à présent entre 0.2 et 0.8
 #    i += 1
-import threading
+from threading import Thread, RLock
 import random
 import sys
 import time
 
-class Afficheur(threading.Thread):
+
+verrou = RLock()
+
+class Afficheur(Thread):
     def __init__(self, lettre):
         """Thread chargé simplement d'afficher une lettre dans la console"""
-        threading.Thread.__init__(self)
+        Thread.__init__(self)
         self.lettre = lettre
     def run(self):
         """Code à exécuter pendant l'exécution du thread."""
@@ -34,22 +37,23 @@ class Afficheur(threading.Thread):
             # attente est à présent entre 0.2 et 0.8
             i += 1
 
-class AfficheurMots(threading.Thread):
+class AfficheurMots(Thread):
     def __init__(self, mot):
         """Thread chargé simplement d'afficher un mot dans la console"""
-        threading.Thread.__init__(self)
+        Thread.__init__(self)
         self.mot = mot
     def run(self):
         """Code à exécuter pendant l'exécution du thread."""
         i = 0
         time.sleep(0.5)
         while i < 5:
-            for lettre in self.mot:
-                sys.stdout.write(lettre)
-                sys.stdout.flush()
-                attente = 0.2
-                attente += random.randint(1, 60) / 100
-                time.sleep(attente)
+            with verrou:
+                for lettre in self.mot:
+                    sys.stdout.write(lettre)
+                    sys.stdout.flush()
+                    attente = 0.2
+                    attente += random.randint(1, 60) / 100
+                    time.sleep(attente)
             i += 1
         
 
