@@ -34,17 +34,39 @@ class Afficheur(threading.Thread):
             # attente est à présent entre 0.2 et 0.8
             i += 1
 
+class AfficheurMots(threading.Thread):
+    def __init__(self, mot):
+        """Thread chargé simplement d'afficher un mot dans la console"""
+        threading.Thread.__init__(self)
+        self.mot = mot
+    def run(self):
+        """Code à exécuter pendant l'exécution du thread."""
+        i = 0
+        time.sleep(0.5)
+        while i < 5:
+            for lettre in self.mot:
+                sys.stdout.write(lettre)
+                sys.stdout.flush()
+                attente = 0.2
+                attente += random.randint(1, 60) / 100
+                time.sleep(attente)
+            i += 1
+        
+
 #Création des threads
 thread1 = Afficheur("1")
 thread2 = Afficheur("2")
 thread3 = Afficheur("3")
+thread4 = AfficheurMots("CARACOLA")
+thread5 = AfficheurMots("sibim")
+thread6 = AfficheurMots("123123")
 
 #Lancement des threads  
-thread1.start()
-thread2.start()
-thread3.start()
+thread4.start()
+thread5.start()
+thread6.start()
 
 # Attend que les threads se terminent
-thread1.join()
-thread2.join()
-thread3.join()
+thread4.join()
+thread5.join()
+thread6.join()
